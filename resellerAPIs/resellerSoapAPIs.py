@@ -212,7 +212,7 @@ class Util():
 #for unit testing the functions
 if __name__ == '__main__':
     wsdl = 'file:///' +  os.path.abspath("./query.jws.xml")
-    #url = "https://stage1-api.geotrust.symclab.net/query.jws?wsdl"
+    #url = 'https://api.ws.symantec.com/webtrust/query.jws?WSDL'
     h = TestApi(wsdl,
         'GetOrderByPartnerOrderID',
         authToken_UserName='username',
