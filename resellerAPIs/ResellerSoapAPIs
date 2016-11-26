@@ -215,10 +215,10 @@ if __name__ == '__main__':
     #url = "https://stage1-api.geotrust.symclab.net/query.jws?wsdl"
     h = TestApi(wsdl,
         'GetOrderByPartnerOrderID',
-        authToken_UserName='apirapidssl-extra',
-        password='apirapidsslgt1',
-        partnercode='apirapidssl',
-        PartnerOrderID='OmMZVMZVz2FUz0L8p4DEu',
+        authToken_UserName='username',
+        password='password',
+        partnercode='partnercode',
+        PartnerOrderID='parterorderid',
         ReturnProductDetail=True,
         ReturnContacts=True,
         criterion = [1,2])
