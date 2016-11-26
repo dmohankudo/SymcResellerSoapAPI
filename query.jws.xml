@@ -1,0 +1,1254 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<s0:definitions name="queryDefinitions" targetNamespace="http://api.geotrust.com/webtrust/query" xmlns="" xmlns:s0="http://schemas.xmlsoap.org/wsdl/" xmlns:s1="http://api.geotrust.com/webtrust/query" xmlns:s2="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s3="http://www.openuri.org/2006/12/wsdl/upgradedJWS">
+  <s0:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://api.geotrust.com/webtrust/query" xmlns:s0="http://schemas.xmlsoap.org/wsdl/" xmlns:s1="http://api.geotrust.com/webtrust/query" xmlns:s2="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s3="http://www.openuri.org/2006/12/wsdl/upgradedJWS" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="AuthQueryParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OrganizationInfo" type="quer:AuthQueryOrganizationInfo" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="FromDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="ToDate" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AuthQueryOrganizationInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OrganizationName" type="xs:string"/>
+          <xs:element minOccurs="0" name="City" type="xs:string"/>
+          <xs:element minOccurs="0" name="Region" type="xs:string"/>
+          <xs:element minOccurs="0" name="Country" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AuthOrderDataStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GeoTrustOrderID" type="xs:string"/>
+          <xs:element minOccurs="0" name="PartnerOrderID" type="xs:string"/>
+          <xs:element minOccurs="0" name="OrderStatus" type="xs:string"/>
+          <xs:element minOccurs="0" name="AuthOrderParameters" type="quer:AuthOrderParameters" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="AuthDataStatus" type="quer:AuthDataStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="AuthVettingComments" type="quer:ArrayOfAuthenticationComment" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="BillingContact" type="quer:Contact" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AuthOrderParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContractID" type="xs:string"/>
+          <xs:element minOccurs="0" name="SpecialInstructions" type="xs:string"/>
+          <xs:element minOccurs="0" name="ValidityPeriod" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AuthDataStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OrganizationAuthStatus" type="quer:OrganizationAuthStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="DomainAuthStatuses" type="quer:ArrayOfDomainAuthStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="ContactPairAuthStatuses" type="quer:ArrayOfContactPairAuthStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OrganizationAuthStatus">
+        <xs:complexContent>
+          <xs:extension base="quer:organizationInfo" xmlns:quer="http://api.geotrust.com/webtrust/query">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="AuthStatus" type="quer:AuthStatus"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="organizationInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OrganizationName" type="xs:string"/>
+          <xs:element minOccurs="0" name="LocalTradingNames" type="quer:ArrayOfLocalTradingName" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="DUNS" type="xs:string"/>
+          <xs:element minOccurs="0" name="Division" type="xs:string"/>
+          <xs:element minOccurs="0" name="IncorporatingAgency" type="xs:string"/>
+          <xs:element minOccurs="0" name="RegistrationNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="JurisdictionCity" type="xs:string"/>
+          <xs:element minOccurs="0" name="JurisdictionRegion" type="xs:string"/>
+          <xs:element minOccurs="0" name="JurisdictionCountry" type="xs:string"/>
+          <xs:element minOccurs="0" name="BusinessCategory" type="xs:string"/>
+          <xs:element minOccurs="0" name="LicenseStartDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="LicenseEndDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="RegistrationDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="OrganizationAddress" type="quer:organizationAddress" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="CustomFields" type="quer:ArrayOfCustomField" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="LocalTradingName">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" type="xs:string"/>
+          <xs:element minOccurs="0" name="Locale" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfLocalTradingName">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="LocalTradingName" type="quer:LocalTradingName" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfLocalTradingName" type="quer:ArrayOfLocalTradingName" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="organizationAddress">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AddressLine1" type="xs:string"/>
+          <xs:element minOccurs="0" name="AddressLine2" type="xs:string"/>
+          <xs:element minOccurs="0" name="AddressLine3" type="xs:string"/>
+          <xs:element minOccurs="0" name="City" type="xs:string"/>
+          <xs:element minOccurs="0" name="Region" type="xs:string"/>
+          <xs:element minOccurs="0" name="PostalCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="Country" type="xs:string"/>
+          <xs:element minOccurs="0" name="Phone" type="xs:string"/>
+          <xs:element minOccurs="0" name="VerifiedPhone" type="xs:string"/>
+          <xs:element minOccurs="0" name="Fax" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CustomField">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" type="xs:string"/>
+          <xs:element minOccurs="0" name="Value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfCustomField">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CustomField" type="quer:CustomField" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCustomField" type="quer:ArrayOfCustomField" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="AuthStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Category" type="xs:string"/>
+          <xs:element minOccurs="0" name="StatusCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="Description" type="xs:string"/>
+          <xs:element minOccurs="0" name="Message" type="xs:string"/>
+          <xs:element minOccurs="0" name="UpdateDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="ExpiryDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="Comments" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DomainAuthStatus">
+        <xs:complexContent>
+          <xs:extension base="quer:Domain" xmlns:quer="http://api.geotrust.com/webtrust/query">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="AuthStatus" type="quer:AuthStatus"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Domain">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfDomainAuthStatus">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="DomainAuthStatus" type="quer:DomainAuthStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfDomainAuthStatus" type="quer:ArrayOfDomainAuthStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="ContactPairAuthStatus">
+        <xs:complexContent>
+          <xs:extension base="quer:ContactPair" xmlns:quer="http://api.geotrust.com/webtrust/query">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="AuthStatus" type="quer:AuthStatus"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ContactPair">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdminContact" type="quer:Contact" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="TechContact" type="quer:Contact" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="ContactType" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Contact">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FirstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="LastName" type="xs:string"/>
+          <xs:element minOccurs="0" name="Phone" type="xs:string"/>
+          <xs:element minOccurs="0" name="AltPhone" type="xs:string"/>
+          <xs:element minOccurs="0" name="Email" type="xs:string"/>
+          <xs:element minOccurs="0" name="Title" type="xs:string"/>
+          <xs:element minOccurs="0" name="Fax" type="xs:string"/>
+          <xs:element minOccurs="0" name="OrganizationName" type="xs:string"/>
+          <xs:element minOccurs="0" name="AddressLine1" type="xs:string"/>
+          <xs:element minOccurs="0" name="AddressLine2" type="xs:string"/>
+          <xs:element minOccurs="0" name="AddressLine3" type="xs:string"/>
+          <xs:element minOccurs="0" name="City" type="xs:string"/>
+          <xs:element minOccurs="0" name="Region" type="xs:string"/>
+          <xs:element minOccurs="0" name="PostalCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="Country" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfContactPairAuthStatus">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ContactPairAuthStatus" type="quer:ContactPairAuthStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfContactPairAuthStatus" type="quer:ArrayOfContactPairAuthStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="AuthenticationComment">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Message" type="xs:string"/>
+          <xs:element minOccurs="0" name="TimeStamp" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfAuthenticationComment">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="AuthenticationComment" type="quer:AuthenticationComment" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfAuthenticationComment" type="quer:ArrayOfAuthenticationComment" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="GetUserAgreementInput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryRequestHeader" type="quer:queryRequestHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="UserAgreementProductCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="AgreementType" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="queryRequestHeader">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ApiVersion" type="xs:string"/>
+          <xs:element minOccurs="0" name="PartnerCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="AuthToken" type="quer:authToken" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="ReplayToken" type="xs:string"/>
+          <xs:element minOccurs="0" name="UseReplayToken" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="authToken">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="UserName" type="xs:string"/>
+          <xs:element minOccurs="0" name="Password" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fileAuthDVInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PollStatus" type="xs:string"/>
+          <xs:element minOccurs="0" name="LastPollDate" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SearchCriteria">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="And" type="quer:ArrayOfCriterion" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Criterion">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" type="xs:string"/>
+          <xs:element minOccurs="0" name="Value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfCriterion">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Criterion" type="quer:Criterion" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCriterion" type="quer:ArrayOfCriterion" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="GetPreAuthOrderByPartnerOrderIDOutput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AuthQueryResponseHeader" type="quer:queryResponseHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="AuthOrderDataStatus" type="quer:AuthOrderDataStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="queryResponseHeader">
+        <xs:sequence>
+          <xs:element name="SuccessCode" type="xs:int"/>
+          <xs:element minOccurs="0" name="Errors" type="quer:ArrayOfError" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="Timestamp" type="xs:dateTime"/>
+          <xs:element name="ReturnCount" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Error">
+        <xs:sequence>
+          <xs:element name="ErrorCode" type="xs:int"/>
+          <xs:element minOccurs="0" name="ErrorField" type="xs:string"/>
+          <xs:element minOccurs="0" name="ErrorMessage" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfError">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Error" type="quer:Error" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfError" type="quer:ArrayOfError" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="ParseCSROutput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryResponseHeader" type="quer:queryResponseHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="DomainName" type="xs:string"/>
+          <xs:element minOccurs="0" name="Country" type="xs:string"/>
+          <xs:element minOccurs="0" name="Email" type="xs:string"/>
+          <xs:element minOccurs="0" name="Locality" type="xs:string"/>
+          <xs:element minOccurs="0" name="Organization" type="xs:string"/>
+          <xs:element minOccurs="0" name="OrganizationUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="State" type="xs:string"/>
+          <xs:element name="IsValidTrueDomainName" type="xs:boolean"/>
+          <xs:element name="IsValidQuickDomainName" type="xs:boolean"/>
+          <xs:element name="HasBadExtensions" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetOrderByPartnerOrderIDInput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryRequestHeader" type="quer:queryRequestHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="PartnerOrderID" type="xs:string"/>
+          <xs:element minOccurs="0" name="OrderQueryOptions" type="quer:orderQueryOptions" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="orderQueryOptions">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ReturnProductDetail" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ReturnContacts" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ReturnCertificateInfo" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ReturnCertificateAlgorithmInfo" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ReturnFulfillment" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ReturnCACerts" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ReturnPKCS7Cert" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ReturnOrderAttributes" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ReturnAuthenticationComments" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ReturnAuthenticationStatuses" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ReturnTrustServicesSummary" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ReturnTrustServicesDetails" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ReturnVulnerabilityScanSummary" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ReturnVulnerabilityScanDetails" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ReturnFileAuthDVSummary" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ReturnDNSAuthDVSummary" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="CertificateSearchCriteria" type="quer:SearchCriteria" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetModifiedOrderSummaryInput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryRequestHeader" type="quer:queryRequestHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="FromDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="ToDate" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetOrdersByDateRangeOutput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryResponseHeader" type="quer:queryResponseHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="FromDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="ToDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="OrderDetails" type="quer:ArrayOfOrderDetail" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OrderDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ModificationEvents" type="quer:ArrayOfModificationEvent" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="OrderInfo" type="quer:orderInfo" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="QuickOrderDetail" type="quer:quickOrderDetail" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="TrueOrderDetail" type="quer:trueOrderDetail" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="OrderContacts" type="quer:orderContacts" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="TCOrderDetail" type="quer:TCOrderDetail" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="CertificateInfo" type="quer:certificateInfo" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="PendingCertificateInfo" type="quer:certificateInfo" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="Fulfillment" type="quer:fulfillment" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="CertificateSearchResult" type="quer:ArrayOfCertificateDetail" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="OrderAttributes" type="quer:ArrayOfOrderAttribute" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="AuthenticationComments" type="quer:ArrayOfAuthenticationComment" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="AuthenticationStatuses" type="quer:ArrayOfAuthenticationStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="SANVettingStatuses" type="quer:ArrayOfSANVettingStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="TrustServicesDetails" type="quer:trustServicesDetails" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="TrialDetails" type="quer:TrialDetails" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="VulnerabilityScanDetails" type="quer:vulnerabilityScanDetails" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ModificationEvent">
+        <xs:sequence>
+          <xs:element name="ModificationEventID" type="xs:int"/>
+          <xs:element minOccurs="0" name="ModificationEventName" type="xs:string"/>
+          <xs:element minOccurs="0" name="ModificationTimestamp" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfModificationEvent">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ModificationEvent" type="quer:ModificationEvent" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfModificationEvent" type="quer:ArrayOfModificationEvent" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="orderInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PartnerOrderID" type="xs:string"/>
+          <xs:element minOccurs="0" name="GeoTrustOrderID" type="xs:int"/>
+          <xs:element minOccurs="0" name="DomainName" type="xs:string"/>
+          <xs:element minOccurs="0" name="OrderDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="OrderCompleteDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="OrderDeactivatedDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="Price" type="xs:string"/>
+          <xs:element minOccurs="0" name="Method" type="xs:string"/>
+          <xs:element minOccurs="0" name="OrderStatusMajor" type="xs:string"/>
+          <xs:element minOccurs="0" name="ValidityPeriod" type="xs:int"/>
+          <xs:element minOccurs="0" name="ServerCount" type="xs:int"/>
+          <xs:element minOccurs="0" name="RenewalInd" type="xs:string"/>
+          <xs:element minOccurs="0" name="CUIndicator" type="xs:string"/>
+          <xs:element minOccurs="0" name="ProductCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="RenewalBehavior" type="xs:string"/>
+          <xs:element minOccurs="0" name="SpecialInstructions" type="xs:string"/>
+          <xs:element minOccurs="0" name="OrderState" type="xs:string"/>
+          <xs:element minOccurs="0" name="OrderStateReason" type="quer:OrderStateReason" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="ResellerApprovalStatus" type="xs:string"/>
+          <xs:element minOccurs="0" name="WstepInd" type="xs:string"/>
+          <xs:element minOccurs="0" name="SealPreference" type="xs:string"/>
+          <xs:element minOccurs="0" name="SealStatus" type="xs:string"/>
+          <xs:element minOccurs="0" name="MalwareScanStatus" type="xs:string"/>
+          <xs:element minOccurs="0" name="LastScanDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="UsageBillingIndicator" type="xs:string"/>
+          <xs:element minOccurs="0" name="UsageFromDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="UsageToDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="UsageHours" type="xs:int"/>
+          <xs:element minOccurs="0" name="VulnerabilityScanInfo" type="quer:vulnerabilityScanInfo" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="FileAuthDVInfo" type="quer:fileAuthDVInfo" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="DNSAuthDVInfo" type="quer:DNSAuthDVInfo" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="SubscriptionStatus" type="xs:string"/>
+          <xs:element minOccurs="0" name="RenewalEligible" type="xs:string"/>
+          <xs:element minOccurs="0" name="SubscriptionEndDate" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OrderStateReason">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OrderStateReasonCodes" type="quer:ArrayOfString" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="OrderStateReasonDetails" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfString">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="String" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfString" type="quer:ArrayOfString" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="vulnerabilityScanInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ServiceStatus" type="xs:string"/>
+          <xs:element minOccurs="0" name="EmailNotificationLevel" type="xs:string"/>
+          <xs:element minOccurs="0" name="ScanStatus" type="xs:string"/>
+          <xs:element minOccurs="0" name="LastScanDate" type="xs:dateTime"/>
+          <xs:element name="OnDemandScanInProgress" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="Vulnerabilities" type="quer:ArrayOfVulnerability" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Vulnerability">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Severity" type="xs:string"/>
+          <xs:element name="NumberFound" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfVulnerability">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Vulnerability" type="quer:Vulnerability" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfVulnerability" type="quer:ArrayOfVulnerability" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="DNSAuthDVInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PollStatus" type="xs:string"/>
+          <xs:element minOccurs="0" name="LastPollDate" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="quickOrderDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OrderStatusMinor" type="quer:orderStatusMinor" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="OrganizationInfo" type="quer:organizationInfo" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="ApproverNotifiedDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="ApproverConfirmDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="ApproverEmailAddress" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="orderStatusMinor">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OrderStatusMinorCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="OrderStatusMinorName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="trueOrderDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OrderStatusMinor" type="quer:orderStatusMinor" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="OrganizationInfo" type="quer:organizationInfo" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="orderContacts">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdminContact" type="quer:Contact" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="TechContact" type="quer:Contact" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="BillingContact" type="quer:Contact" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TCOrderDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OrderStatusMinor" type="quer:orderStatusMinor" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="InviteDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="InviteDuration" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="certificateInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CertificateStatus" type="xs:string"/>
+          <xs:element minOccurs="0" name="StartDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="EndDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="CommonName" type="xs:string"/>
+          <xs:element minOccurs="0" name="SerialNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="Locality" type="xs:string"/>
+          <xs:element minOccurs="0" name="State" type="xs:string"/>
+          <xs:element minOccurs="0" name="Organization" type="xs:string"/>
+          <xs:element minOccurs="0" name="Country" type="xs:string"/>
+          <xs:element minOccurs="0" name="OrganizationalUnit" type="xs:string"/>
+          <xs:element minOccurs="0" name="OrganizationalUnit2" type="xs:string"/>
+          <xs:element minOccurs="0" name="OrganizationalUnit3" type="xs:string"/>
+          <xs:element minOccurs="0" name="RegistrationNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="JurisdictionCity" type="xs:string"/>
+          <xs:element minOccurs="0" name="JurisdictionRegion" type="xs:string"/>
+          <xs:element minOccurs="0" name="JurisdictionCountry" type="xs:string"/>
+          <xs:element minOccurs="0" name="WebServerType" type="xs:string"/>
+          <xs:element minOccurs="0" name="DNSNames" type="xs:string"/>
+          <xs:element minOccurs="0" name="UID" type="xs:string"/>
+          <xs:element minOccurs="0" name="AlgorithmInfo" type="quer:algorithmInfo" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="CertTransparency" type="quer:CertTransparency" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="algorithmInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SignatureHashAlgorithm" type="xs:string"/>
+          <xs:element minOccurs="0" name="SignatureEncryptionAlgorithm" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CertTransparency">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CTLogging" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="CTMethod" type="xs:string"/>
+          <xs:element minOccurs="0" name="CTPrivacy" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fulfillment">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CACertificates" type="quer:ArrayOfCACertificate" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="ServerCertificate" type="xs:string"/>
+          <xs:element minOccurs="0" name="IconScript" type="xs:string"/>
+          <xs:element minOccurs="0" name="Certificate" type="xs:string"/>
+          <xs:element minOccurs="0" name="PKCS7" type="xs:string"/>
+          <xs:element minOccurs="0" name="PKCS12" type="xs:string"/>
+          <xs:element minOccurs="0" name="PKCS12EncryptedPassword" type="xs:string"/>
+          <xs:element minOccurs="0" name="SealUrl" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CACertificate">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Type" type="xs:string"/>
+          <xs:element minOccurs="0" name="CACert" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfCACertificate">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CACertificate" type="quer:CACertificate" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCACertificate" type="quer:ArrayOfCACertificate" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="CertificateDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CertificateInfo" type="quer:certificateInfo" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="Fulfillment" type="quer:fulfillment" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfCertificateDetail">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="CertificateDetail" type="quer:CertificateDetail" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCertificateDetail" type="quer:ArrayOfCertificateDetail" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="OrderAttribute">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OrderTag" type="xs:string"/>
+          <xs:element minOccurs="0" name="OrderValue" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfOrderAttribute">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="OrderAttribute" type="quer:OrderAttribute" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfOrderAttribute" type="quer:ArrayOfOrderAttribute" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="AuthenticationStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AuthenticationStep" type="xs:string"/>
+          <xs:element minOccurs="0" name="Status" type="xs:string"/>
+          <xs:element minOccurs="0" name="LastUpdated" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfAuthenticationStatus">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="AuthenticationStatus" type="quer:AuthenticationStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfAuthenticationStatus" type="quer:ArrayOfAuthenticationStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="SANVettingStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" type="xs:string"/>
+          <xs:element minOccurs="0" name="Status" type="xs:string"/>
+          <xs:element minOccurs="0" name="LastUpdated" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfSANVettingStatus">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="SANVettingStatus" type="quer:SANVettingStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfSANVettingStatus" type="quer:ArrayOfSANVettingStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="trustServicesDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MalwareScanReport" type="quer:malwareScanReport" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="malwareScanReport">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OnDemandScanInProgress" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="InfectedPages" type="quer:ArrayOfInfectedPage" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InfectedPage">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FoundDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="PageURL" type="xs:string"/>
+          <xs:element minOccurs="0" name="InfectionIssues" type="quer:ArrayOfString" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfInfectedPage">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="InfectedPage" type="quer:InfectedPage" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfInfectedPage" type="quer:ArrayOfInfectedPage" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="TrialDetails">
+        <xs:sequence>
+          <xs:element name="OrderPlacedAsTrial" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="TrialExpirationDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="TrialState" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="vulnerabilityScanDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ReportFileData" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfOrderDetail">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="OrderDetail" type="quer:OrderDetail" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfOrderDetail" type="quer:ArrayOfOrderDetail" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="CheckStatusOutput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryResponseHeader" type="quer:queryResponseHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="OrderStatus" type="quer:orderStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="orderStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OrderStatusMajor" type="xs:string"/>
+          <xs:element minOccurs="0" name="OrderStatusMinor" type="quer:orderStatusMinor" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CheckStatusInput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryRequestHeader" type="quer:queryRequestHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="PartnerOrderID" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetModifiedPreAuthOrderSummaryOutput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryResponseHeader" type="quer:queryResponseHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="FromDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="ToDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="ModifiedPartnerOrders" type="quer:ArrayOfModifiedPartnerOrder" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ModifiedPartnerOrder">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PartnerCode" type="xs:string"/>
+          <xs:element name="ModifiedOrderCount" type="xs:int"/>
+          <xs:element minOccurs="0" name="OrderSummaries" type="quer:ArrayOfOrderSummary" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OrderSummary">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PartnerOrderID" type="xs:string"/>
+          <xs:element minOccurs="0" name="GeoTrustOrderID" type="xs:int"/>
+          <xs:element minOccurs="0" name="LastModifiedDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="PartnerCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="OrderState" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfOrderSummary">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="OrderSummary" type="quer:OrderSummary" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfOrderSummary" type="quer:ArrayOfOrderSummary" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="ArrayOfModifiedPartnerOrder">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ModifiedPartnerOrder" type="quer:ModifiedPartnerOrder" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfModifiedPartnerOrder" type="quer:ArrayOfModifiedPartnerOrder" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="GetModifiedOrdersOutput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryResponseHeader" type="quer:queryResponseHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="FromDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="ToDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="OrderDetails" type="quer:ArrayOfOrderDetail" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetUserAgreementOutput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryResponseHeader" type="quer:queryResponseHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="UserAgreement" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ParseCSRInput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryRequestHeader" type="quer:queryRequestHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="CSR" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPreAuthOrdersByDataRangeInput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryRequestHeader" type="quer:queryRequestHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="QueryParameters" type="quer:AuthQueryParameters" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetFulfillmentOutput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryResponseHeader" type="quer:queryResponseHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="Fulfillment" type="quer:fulfillment" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetFulfillmentInput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryRequestHeader" type="quer:queryRequestHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="PartnerOrderID" type="xs:string"/>
+          <xs:element minOccurs="0" name="ReturnCACerts" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ReturnPKCS7Cert" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="ReturnIconScript" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetModifiedOrdersInput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryRequestHeader" type="quer:queryRequestHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="FromDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="ToDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="OrderQueryOptions" type="quer:orderQueryOptions" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetModifiedOrderSummaryOutput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryResponseHeader" type="quer:queryResponseHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="FromDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="ToDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="ModifiedPartnerOrders" type="quer:ArrayOfModifiedPartnerOrder" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetQuickApproverListInput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryRequestHeader" type="quer:queryRequestHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="Domain" type="xs:string"/>
+          <xs:element minOccurs="0" name="IncludeUserAgreement" type="quer:includeUserAgreement" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="includeUserAgreement">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="UserAgreementProductCode" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetQuickApproverListOutput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryResponseHeader" type="quer:queryResponseHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="ApproverList" type="quer:ArrayOfApprover" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="UserAgreement" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Approver">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ApproverType" type="xs:string"/>
+          <xs:element minOccurs="0" name="ApproverEmail" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfApprover">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Approver" type="quer:Approver" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfApprover" type="quer:ArrayOfApprover" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="GetPreAuthOrdersByDateRangeOutput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AuthQueryResponseHeader" type="quer:queryResponseHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="FromDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="ToDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="OrganizationAuthStatus" type="quer:OrganizationAuthStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="AuthOrderDataStatuses" type="quer:ArrayOfAuthOrderDataStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ArrayOfAuthOrderDataStatus">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="AuthOrderDataStatus" type="quer:AuthOrderDataStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfAuthOrderDataStatus" type="quer:ArrayOfAuthOrderDataStatus" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+      <xs:complexType name="GetOrdersByDateRangeInput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryRequestHeader" type="quer:queryRequestHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="FromDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="ToDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="DNSearchString" type="xs:string"/>
+          <xs:element minOccurs="0" name="DNComponents" type="xs:string"/>
+          <xs:element minOccurs="0" name="OrderQueryOptions" type="quer:orderQueryOptions" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetOrderByPartnerOrderIDOutput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryResponseHeader" type="quer:queryResponseHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="OrderDetail" type="quer:OrderDetail" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetPreAuthOrderByPartnerOrderIDInput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryRequestHeader" type="quer:queryRequestHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="PartnerOrderID" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetModifiedPreAuthOrderSummaryInput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QueryRequestHeader" type="quer:queryRequestHeader" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          <xs:element minOccurs="0" name="FromDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="ToDate" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetFulfillment">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Request" type="quer:GetFulfillmentInput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetFulfillmentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetFulfillmentResult" type="quer:GetFulfillmentOutput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetModifiedPreAuthOrderSummary">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Request" type="quer:GetModifiedPreAuthOrderSummaryInput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetModifiedPreAuthOrderSummaryResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetModifiedPreAuthOrderSummaryResult" type="quer:GetModifiedPreAuthOrderSummaryOutput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckStatus">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Request" type="quer:CheckStatusInput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CheckStatusResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="CheckStatusResult" type="quer:CheckStatusOutput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetModifiedOrderSummary">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Request" type="quer:GetModifiedOrderSummaryInput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetModifiedOrderSummaryResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetModifiedOrderSummaryResult" type="quer:GetModifiedOrderSummaryOutput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPreAuthOrderByPartnerOrderID">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="AuthQueryRequest" type="quer:GetPreAuthOrderByPartnerOrderIDInput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPreAuthOrderByPartnerOrderIDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetPreAuthOrderByPartnerOrderIDResult" type="quer:GetPreAuthOrderByPartnerOrderIDOutput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetModifiedOrders">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Request" type="quer:GetModifiedOrdersInput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetModifiedOrdersResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetModifiedOrdersResult" type="quer:GetModifiedOrdersOutput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetUserAgreement">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Request" type="quer:GetUserAgreementInput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetUserAgreementResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetUserAgreementResult" type="quer:GetUserAgreementOutput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOrdersByDateRange">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Request" type="quer:GetOrdersByDateRangeInput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOrdersByDateRangeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetOrdersByDateRangeResult" type="quer:GetOrdersByDateRangeOutput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOrderByPartnerOrderID">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Request" type="quer:GetOrderByPartnerOrderIDInput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetOrderByPartnerOrderIDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetOrderByPartnerOrderIDResult" type="quer:GetOrderByPartnerOrderIDOutput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="hello">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Input" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="helloResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="helloResult" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPreAuthOrdersByDateRange">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="AuthQueryRequest" type="quer:GetPreAuthOrdersByDataRangeInput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPreAuthOrdersByDateRangeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetPreAuthDataByOrganizationResult" type="quer:GetPreAuthOrdersByDateRangeOutput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ParseCSR">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Request" type="quer:ParseCSRInput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ParseCSRResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ParseCSRResult" type="quer:ParseCSROutput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetQuickApproverList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Request" type="quer:GetQuickApproverListInput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetQuickApproverListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetQuickApproverListResult" type="quer:GetQuickApproverListOutput" xmlns:quer="http://api.geotrust.com/webtrust/query"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </s0:types>
+  <s0:message name="GetFulfillment">
+    <s0:part element="s1:GetFulfillment" name="parameters"/>
+  </s0:message>
+  <s0:message name="GetFulfillmentResponse">
+    <s0:part element="s1:GetFulfillmentResponse" name="GetFulfillmentResultPart"/>
+  </s0:message>
+  <s0:message name="GetModifiedPreAuthOrderSummary">
+    <s0:part element="s1:GetModifiedPreAuthOrderSummary" name="parameters"/>
+  </s0:message>
+  <s0:message name="GetModifiedPreAuthOrderSummaryResponse">
+    <s0:part element="s1:GetModifiedPreAuthOrderSummaryResponse" name="GetModifiedPreAuthOrderSummaryResultPart"/>
+  </s0:message>
+  <s0:message name="CheckStatus">
+    <s0:part element="s1:CheckStatus" name="parameters"/>
+  </s0:message>
+  <s0:message name="CheckStatusResponse">
+    <s0:part element="s1:CheckStatusResponse" name="CheckStatusResultPart"/>
+  </s0:message>
+  <s0:message name="GetModifiedOrderSummary">
+    <s0:part element="s1:GetModifiedOrderSummary" name="parameters"/>
+  </s0:message>
+  <s0:message name="GetModifiedOrderSummaryResponse">
+    <s0:part element="s1:GetModifiedOrderSummaryResponse" name="GetModifiedOrderSummaryResultPart"/>
+  </s0:message>
+  <s0:message name="GetPreAuthOrderByPartnerOrderID">
+    <s0:part element="s1:GetPreAuthOrderByPartnerOrderID" name="parameters"/>
+  </s0:message>
+  <s0:message name="GetPreAuthOrderByPartnerOrderIDResponse">
+    <s0:part element="s1:GetPreAuthOrderByPartnerOrderIDResponse" name="GetPreAuthOrderByPartnerOrderIDResultPart"/>
+  </s0:message>
+  <s0:message name="GetModifiedOrders">
+    <s0:part element="s1:GetModifiedOrders" name="parameters"/>
+  </s0:message>
+  <s0:message name="GetModifiedOrdersResponse">
+    <s0:part element="s1:GetModifiedOrdersResponse" name="GetModifiedOrdersResultPart"/>
+  </s0:message>
+  <s0:message name="GetUserAgreement">
+    <s0:part element="s1:GetUserAgreement" name="parameters"/>
+  </s0:message>
+  <s0:message name="GetUserAgreementResponse">
+    <s0:part element="s1:GetUserAgreementResponse" name="GetUserAgreementResultPart"/>
+  </s0:message>
+  <s0:message name="GetOrdersByDateRange">
+    <s0:part element="s1:GetOrdersByDateRange" name="parameters"/>
+  </s0:message>
+  <s0:message name="GetOrdersByDateRangeResponse">
+    <s0:part element="s1:GetOrdersByDateRangeResponse" name="GetOrdersByDateRangeResultPart"/>
+  </s0:message>
+  <s0:message name="GetOrderByPartnerOrderID">
+    <s0:part element="s1:GetOrderByPartnerOrderID" name="parameters"/>
+  </s0:message>
+  <s0:message name="GetOrderByPartnerOrderIDResponse">
+    <s0:part element="s1:GetOrderByPartnerOrderIDResponse" name="GetOrderByPartnerOrderIDResultPart"/>
+  </s0:message>
+  <s0:message name="hello">
+    <s0:part element="s1:hello" name="parameters"/>
+  </s0:message>
+  <s0:message name="helloResponse">
+    <s0:part element="s1:helloResponse" name="helloResultPart"/>
+  </s0:message>
+  <s0:message name="GetPreAuthOrdersByDateRange">
+    <s0:part element="s1:GetPreAuthOrdersByDateRange" name="parameters"/>
+  </s0:message>
+  <s0:message name="GetPreAuthOrdersByDateRangeResponse">
+    <s0:part element="s1:GetPreAuthOrdersByDateRangeResponse" name="GetPreAuthDataByOrganizationResultPart"/>
+  </s0:message>
+  <s0:message name="ParseCSR">
+    <s0:part element="s1:ParseCSR" name="parameters"/>
+  </s0:message>
+  <s0:message name="ParseCSRResponse">
+    <s0:part element="s1:ParseCSRResponse" name="ParseCSRResultPart"/>
+  </s0:message>
+  <s0:message name="GetQuickApproverList">
+    <s0:part element="s1:GetQuickApproverList" name="parameters"/>
+  </s0:message>
+  <s0:message name="GetQuickApproverListResponse">
+    <s0:part element="s1:GetQuickApproverListResponse" name="GetQuickApproverListResultPart"/>
+  </s0:message>
+  <s0:portType name="querySoap">
+    <s0:operation name="GetFulfillment" parameterOrder="parameters">
+      <s0:input message="s1:GetFulfillment"/>
+      <s0:output message="s1:GetFulfillmentResponse"/>
+    </s0:operation>
+    <s0:operation name="GetModifiedPreAuthOrderSummary" parameterOrder="parameters">
+      <s0:input message="s1:GetModifiedPreAuthOrderSummary"/>
+      <s0:output message="s1:GetModifiedPreAuthOrderSummaryResponse"/>
+    </s0:operation>
+    <s0:operation name="CheckStatus" parameterOrder="parameters">
+      <s0:input message="s1:CheckStatus"/>
+      <s0:output message="s1:CheckStatusResponse"/>
+    </s0:operation>
+    <s0:operation name="GetModifiedOrderSummary" parameterOrder="parameters">
+      <s0:input message="s1:GetModifiedOrderSummary"/>
+      <s0:output message="s1:GetModifiedOrderSummaryResponse"/>
+    </s0:operation>
+    <s0:operation name="GetPreAuthOrderByPartnerOrderID" parameterOrder="parameters">
+      <s0:input message="s1:GetPreAuthOrderByPartnerOrderID"/>
+      <s0:output message="s1:GetPreAuthOrderByPartnerOrderIDResponse"/>
+    </s0:operation>
+    <s0:operation name="GetModifiedOrders" parameterOrder="parameters">
+      <s0:input message="s1:GetModifiedOrders"/>
+      <s0:output message="s1:GetModifiedOrdersResponse"/>
+    </s0:operation>
+    <s0:operation name="GetUserAgreement" parameterOrder="parameters">
+      <s0:input message="s1:GetUserAgreement"/>
+      <s0:output message="s1:GetUserAgreementResponse"/>
+    </s0:operation>
+    <s0:operation name="GetOrdersByDateRange" parameterOrder="parameters">
+      <s0:input message="s1:GetOrdersByDateRange"/>
+      <s0:output message="s1:GetOrdersByDateRangeResponse"/>
+    </s0:operation>
+    <s0:operation name="GetOrderByPartnerOrderID" parameterOrder="parameters">
+      <s0:input message="s1:GetOrderByPartnerOrderID"/>
+      <s0:output message="s1:GetOrderByPartnerOrderIDResponse"/>
+    </s0:operation>
+    <s0:operation name="hello" parameterOrder="parameters">
+      <s0:input message="s1:hello"/>
+      <s0:output message="s1:helloResponse"/>
+    </s0:operation>
+    <s0:operation name="GetPreAuthOrdersByDateRange" parameterOrder="parameters">
+      <s0:input message="s1:GetPreAuthOrdersByDateRange"/>
+      <s0:output message="s1:GetPreAuthOrdersByDateRangeResponse"/>
+    </s0:operation>
+    <s0:operation name="ParseCSR" parameterOrder="parameters">
+      <s0:input message="s1:ParseCSR"/>
+      <s0:output message="s1:ParseCSRResponse"/>
+    </s0:operation>
+    <s0:operation name="GetQuickApproverList" parameterOrder="parameters">
+      <s0:input message="s1:GetQuickApproverList"/>
+      <s0:output message="s1:GetQuickApproverListResponse"/>
+    </s0:operation>
+  </s0:portType>
+  <s0:binding name="querySoapBinding" type="s1:querySoap">
+    <s2:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <s0:operation name="GetFulfillment">
+      <s2:operation style="document"/>
+      <s0:input>
+        <s2:body parts="parameters" use="literal"/>
+      </s0:input>
+      <s0:output>
+        <s2:body parts="GetFulfillmentResultPart" use="literal"/>
+      </s0:output>
+    </s0:operation>
+    <s0:operation name="GetModifiedPreAuthOrderSummary">
+      <s2:operation style="document"/>
+      <s0:input>
+        <s2:body parts="parameters" use="literal"/>
+      </s0:input>
+      <s0:output>
+        <s2:body parts="GetModifiedPreAuthOrderSummaryResultPart" use="literal"/>
+      </s0:output>
+    </s0:operation>
+    <s0:operation name="CheckStatus">
+      <s2:operation style="document"/>
+      <s0:input>
+        <s2:body parts="parameters" use="literal"/>
+      </s0:input>
+      <s0:output>
+        <s2:body parts="CheckStatusResultPart" use="literal"/>
+      </s0:output>
+    </s0:operation>
+    <s0:operation name="GetModifiedOrderSummary">
+      <s2:operation style="document"/>
+      <s0:input>
+        <s2:body parts="parameters" use="literal"/>
+      </s0:input>
+      <s0:output>
+        <s2:body parts="GetModifiedOrderSummaryResultPart" use="literal"/>
+      </s0:output>
+    </s0:operation>
+    <s0:operation name="GetPreAuthOrderByPartnerOrderID">
+      <s2:operation style="document"/>
+      <s0:input>
+        <s2:body parts="parameters" use="literal"/>
+      </s0:input>
+      <s0:output>
+        <s2:body parts="GetPreAuthOrderByPartnerOrderIDResultPart" use="literal"/>
+      </s0:output>
+    </s0:operation>
+    <s0:operation name="GetModifiedOrders">
+      <s2:operation style="document"/>
+      <s0:input>
+        <s2:body parts="parameters" use="literal"/>
+      </s0:input>
+      <s0:output>
+        <s2:body parts="GetModifiedOrdersResultPart" use="literal"/>
+      </s0:output>
+    </s0:operation>
+    <s0:operation name="GetUserAgreement">
+      <s2:operation style="document"/>
+      <s0:input>
+        <s2:body parts="parameters" use="literal"/>
+      </s0:input>
+      <s0:output>
+        <s2:body parts="GetUserAgreementResultPart" use="literal"/>
+      </s0:output>
+    </s0:operation>
+    <s0:operation name="GetOrdersByDateRange">
+      <s2:operation style="document"/>
+      <s0:input>
+        <s2:body parts="parameters" use="literal"/>
+      </s0:input>
+      <s0:output>
+        <s2:body parts="GetOrdersByDateRangeResultPart" use="literal"/>
+      </s0:output>
+    </s0:operation>
+    <s0:operation name="GetOrderByPartnerOrderID">
+      <s2:operation style="document"/>
+      <s0:input>
+        <s2:body parts="parameters" use="literal"/>
+      </s0:input>
+      <s0:output>
+        <s2:body parts="GetOrderByPartnerOrderIDResultPart" use="literal"/>
+      </s0:output>
+    </s0:operation>
+    <s0:operation name="hello">
+      <s2:operation style="document"/>
+      <s0:input>
+        <s2:body parts="parameters" use="literal"/>
+      </s0:input>
+      <s0:output>
+        <s2:body parts="helloResultPart" use="literal"/>
+      </s0:output>
+    </s0:operation>
+    <s0:operation name="GetPreAuthOrdersByDateRange">
+      <s2:operation style="document"/>
+      <s0:input>
+        <s2:body parts="parameters" use="literal"/>
+      </s0:input>
+      <s0:output>
+        <s2:body parts="GetPreAuthDataByOrganizationResultPart" use="literal"/>
+      </s0:output>
+    </s0:operation>
+    <s0:operation name="ParseCSR">
+      <s2:operation style="document"/>
+      <s0:input>
+        <s2:body parts="parameters" use="literal"/>
+      </s0:input>
+      <s0:output>
+        <s2:body parts="ParseCSRResultPart" use="literal"/>
+      </s0:output>
+    </s0:operation>
+    <s0:operation name="GetQuickApproverList">
+      <s2:operation style="document"/>
+      <s0:input>
+        <s2:body parts="parameters" use="literal"/>
+      </s0:input>
+      <s0:output>
+        <s2:body parts="GetQuickApproverListResultPart" use="literal"/>
+      </s0:output>
+    </s0:operation>
+  </s0:binding>
+  <s0:service name="query">
+    <s3:upgraded81/>
+    <s0:port binding="s1:querySoapBinding" name="querySoap">
+      <s2:address location="https://api.geotrust.com:443/webtrust/query.jws"/>
+    </s0:port>
+  </s0:service>
+</s0:definitions>
