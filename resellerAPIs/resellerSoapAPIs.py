@@ -4,14 +4,11 @@ DYNAMICALLY BASED ON API NAME ->
 AND POSTS THE DATA AS A SOAP ENVOLOPE ->
 GETS THE RESOPONSE
 '''
-import requests
 
 
-session = requests.Session()
-
-#from suds.client import Client as sudsClient
 #https://bitbucket.org/jurko/suds/issues/93/sudsclient-raise-exception
 from suds import client as sudsClient
+# install suds using pip install suds-jurko (if not installed)
 
 import os
 # uncomment below for debugging  code
