@@ -1,6 +1,6 @@
 # SymcResellerSoapAPI
 Usage:
-
+```python
 #for unit testing the functions
 import os
 from resellerAPIs import resellerSoapAPIs as r
@@ -20,3 +20,4 @@ h.validate_and_capture_response_data(
     returncount=0,
     queryresponseheader_successcode=0)
 h.print_relevant_data()
+```
