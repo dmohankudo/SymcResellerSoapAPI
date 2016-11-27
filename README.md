@@ -8,7 +8,7 @@ wsdl = 'file:///' +  os.path.abspath("./query.jws.xml")
 #wsdl = 'https://api.ws.symantec.com/webtrust/query.jws?WSDL'
 h = r.TestApi(wsdl,
     'GetOrderByPartnerOrderID',
-    authToken_UserName='username',
+    UserName='username',
     password='password',
     partnercode='partnercode',
     PartnerOrderID='parterorderid',
