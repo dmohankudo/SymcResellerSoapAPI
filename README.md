@@ -6,6 +6,7 @@ import os
 from resellerAPIs import resellerSoapAPIs as r
 wsdl = 'file:///' +  os.path.abspath("./query.jws.xml")
 #wsdl = 'https://api.ws.symantec.com/webtrust/query.jws?WSDL'
+# parameters to the below function call need not be in the same sequence
 h = r.TestApi(wsdl,
     'GetOrderByPartnerOrderID',
     UserName='username',
