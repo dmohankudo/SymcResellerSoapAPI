@@ -19,6 +19,6 @@ h = r.TestApi(wsdl,
 h.process_soap_request()
 h.validate_and_capture_response_data(
     returncount=0,
-    queryresponseheader_successcode=0)
+    successcode=0)
 h.print_relevant_data()
 ```
