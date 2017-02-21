@@ -1,4 +1,8 @@
 # SymcResellerSoapAPI
+Dependency:
+
+pip install requests
+pip install suds
 Usage:
 ```python
 #for unit testing the functions
