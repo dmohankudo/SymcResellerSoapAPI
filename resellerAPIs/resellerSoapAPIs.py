@@ -190,8 +190,7 @@ class Util():
             expected = str(dict_expected_data[expected_param])
             if expected_param in dict_response_data:
                 actual = str(dict_response_data[expected_param])
-                temp = expected == actual
-                result = True if temp == 0 else False
+                result = expected == actual
                 list_result += (result,)
 
             else:
