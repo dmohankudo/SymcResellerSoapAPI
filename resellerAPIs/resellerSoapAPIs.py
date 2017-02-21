@@ -205,4 +205,16 @@ class Util():
         for k, v in dict_object.items():
             print (k, '-->', v)
 
-
+#for unit testing the functions
+if __name__ == '__main__':
+    #wsdl = 'file:///' +  os.path.abspath("./query.jws.xml")
+    wsdl = "https://XXXXXXXXXX/webtrust/query.jws?wsdl"
+    h = TestApi(wsdl,
+        'GetOrderByPartnerOrderID',
+        UserName='xxxxxxx',
+        password='Password',
+        partnercode='partnercode',
+        PartnerOrderID='orderid')
+    h.process_soap_request()
+    h.validate_and_capture_response_data()
+    h.print_relevant_data()
