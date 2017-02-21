@@ -12,9 +12,9 @@ from suds import client as sudsClient
 
 import os
 # uncomment below for debugging  code
-import logging
-logging.basicConfig(level=logging.INFO)
-logging.getLogger('suds.transport.http').setLevel(logging.DEBUG)
+#import logging
+#logging.basicConfig(level=logging.INFO)
+#logging.getLogger('suds.transport.http').setLevel(logging.DEBUG)
 
 class TestApi():
     """Creates soap object types
@@ -107,9 +107,9 @@ class TestApi():
         print ('->' * 40)
         print ('response soap object:::')
         print (self.response_soap_object)
-        print ('->' * 40)
-        print ('actual repsonse values in dictionary format:::')
-        Util().print_dict_elements(self.dict_response_data)
+        #print ('->' * 40)
+        #print ('actual repsonse values in dictionary format:::')
+        #Util().print_dict_elements(self.dict_response_data)
         print ('->' * 40)
         print ('actual-expected match result:::')
         print (self.testcase_result, "<- test case status")
