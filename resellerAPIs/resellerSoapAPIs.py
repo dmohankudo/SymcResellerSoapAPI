@@ -208,7 +208,7 @@ if __name__ == '__main__':
     #wsdl = 'file:///' +  os.path.abspath("./query.jws.xml")
     wsdl = "https://XXXXXXXXXX/webtrust/query.jws?wsdl"
     h = TestApi(wsdl,
-        'GetOrderByPartnerOrderID',
+        api_name='GetOrderByPartnerOrderID',
         UserName='xxxxxxx',
         password='Password',
         partnercode='partnercode',
