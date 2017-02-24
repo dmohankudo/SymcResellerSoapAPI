@@ -5,6 +5,7 @@ __maintainer__ : debaditya_mohankudo@symantec.com
 
 #https://bitbucket.org/jurko/suds/issues/93/sudsclient-raise-exception
 from suds import client as sudsClient
+from suds.cache import NoCache
 # install suds using pip install suds-jurko (if not installed)
 
 import os
@@ -34,6 +35,7 @@ class TestApi():
            takes wsdl url OR file as input
         '''
         self.client = sudsClient.Client(self.wsdl)
+        #self.client = sudsClient.Client(self.wsdl, cache=NoCache())  # this does not store cache
 
 
     def _create_input_obj_type(self):
