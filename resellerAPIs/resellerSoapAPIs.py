@@ -211,7 +211,7 @@ if __name__ == '__main__':
         api_name='GetOrderByPartnerOrderID',
         UserName='xxxxxxx',
         password='Password',
-        queryrequestheader_partnercode='partnercode', # parent_child also allowed
+        queryrequestheader_partnercode='partnercode', # parent_child also allowed - useful when there are duplicate leafs
         QueryRequestHeader_PartnerOrderID='orderid')  #  are case insensitive
     h.process_soap_request()
     h.validate_and_capture_response_data()
