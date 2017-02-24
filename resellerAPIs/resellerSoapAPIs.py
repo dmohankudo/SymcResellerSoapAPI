@@ -17,9 +17,9 @@ import os
 class TestApi():
     """Creates soap object types
        e.g. TestApi(url,'GetOrderByPartnerOrderID',
-            authToken_UserName='XXXXX',authtokenpassword='XXXX',
-            queryrequestheaderpartnercode='xxxxx',
-            QueryRequestHeaderPartnerOrderID='xxxxxx',)
+            authToken_UserName='XXXXX',authtoken_password='XXXX',
+            queryrequestheader_partnercode='xxxxx',
+            QueryRequestHeader_PartnerOrderID='xxxxxx',)
     """
     def __init__(self, wsdl, api_name, **api_params):
         '''
@@ -211,8 +211,8 @@ if __name__ == '__main__':
         api_name='GetOrderByPartnerOrderID',
         UserName='xxxxxxx',
         password='Password',
-        partnercode='partnercode',
-        PartnerOrderID='orderid')
+        queryrequestheader_partnercode='partnercode', # parent_child also allowed
+        QueryRequestHeader_PartnerOrderID='orderid')
     h.process_soap_request()
     h.validate_and_capture_response_data()
     h.print_relevant_data()
