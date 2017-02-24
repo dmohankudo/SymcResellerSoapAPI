@@ -212,7 +212,7 @@ if __name__ == '__main__':
         UserName='xxxxxxx',
         password='Password',
         queryrequestheader_partnercode='partnercode', # parent_child also allowed
-        QueryRequestHeader_PartnerOrderID='orderid')  # these values are case insensitive
+        QueryRequestHeader_PartnerOrderID='orderid')  #  are case insensitive
     h.process_soap_request()
     h.validate_and_capture_response_data()
     h.print_relevant_data()
