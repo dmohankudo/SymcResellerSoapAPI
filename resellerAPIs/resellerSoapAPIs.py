@@ -34,8 +34,8 @@ class TestApi():
         '''create a soap client using suds library
            takes wsdl url OR file as input
         '''
-        self.client = sudsClient.Client(self.wsdl)
-        #self.client = sudsClient.Client(self.wsdl, cache=NoCache())  # this does not store cache
+        #self.client = sudsClient.Client(self.wsdl)   # store wsdl cache
+        self.client = sudsClient.Client(self.wsdl, cache=NoCache())  # this does not store cache
 
 
     def _create_input_obj_type(self):
