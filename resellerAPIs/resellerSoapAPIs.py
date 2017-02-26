@@ -2,24 +2,35 @@
 __maintainer__ : debaditya_mohankudo@symantec.com
 '''
 
-
-#https://bitbucket.org/jurko/suds/issues/93/sudsclient-raise-exception
+'''
+tHIS CREATES A SOAP CLIENT -> CREATES THE INPUT SOAP REQUEST WITH TEST DATA
+DYNAMICALLY BASED ON API NAME ->
+AND POSTS THE DATA AS A SOAP ENVOLOPE ->
+GETS THE RESOPONSE
+'''
+import requests
 from suds import client as sudsClient
 from suds.cache import NoCache
-# install suds using pip install suds-jurko (if not installed)
 
 import os
+
+session = requests.Session()
+
+#from suds.client import Client as sudsClient
+#https://bitbucket.org/jurko/suds/issues/93/sudsclient-raise-exception
+
 # uncomment below for debugging  code
-#import logging
-#logging.basicConfig(level=logging.INFO)
-#logging.getLogger('suds.transport.http').setLevel(logging.DEBUG)
+
+import logging
+logging.basicConfig(level=logging.INFO)
+logging.getLogger('suds.transport.http').setLevel(logging.DEBUG)
 
 class TestApi():
     """Creates soap object types
        e.g. TestApi(url,'GetOrderByPartnerOrderID',
-            authToken_UserName='XXXXX',authtoken_password='XXXX',
-            queryrequestheader_partnercode='xxxxx',
-            QueryRequestHeader_PartnerOrderID='xxxxxx',)
+            authToken_UserName='XXXXX',authtokenpassword='XXXX',
+            queryrequestheaderpartnercode='xxxxx',
+            QueryRequestHeaderPartnerOrderID='xxxxxx',)
     """
     def __init__(self, wsdl, api_name, **api_params):
         '''
@@ -34,8 +45,8 @@ class TestApi():
         '''create a soap client using suds library
            takes wsdl url OR file as input
         '''
-        #self.client = sudsClient.Client(self.wsdl)   # store wsdl cache
-        self.client = sudsClient.Client(self.wsdl, cache=NoCache())  # this does not store cache
+        self.client = sudsClient.Client(self.wsdl, cache=NoCache())
+     
 
 
     def _create_input_obj_type(self):
@@ -94,27 +105,19 @@ class TestApi():
             self.testcase_result = 'PASS'
 
     def print_relevant_data(self):
-        print ('->' * 40)
-        #print self.client
-        print ('->' * 40)
-        print ('->' * 40)
-        print ('Input sopa object request with test data :::')
-        print (self.input_soap_object_w_test_data)
-        print ('->' * 40)
-        print ('Expected data :::')
-        print (self.dict_expected_data)
-        print ('->' * 40)
-        print ('response soap object:::')
-        print (self.response_soap_object)
-        #print ('->' * 40)
-        #print ('actual repsonse values in dictionary format:::')
-        #Util().print_dict_elements(self.dict_response_data)
-        print ('->' * 40)
-        print ('actual-expected match result:::')
-        print (self.testcase_result, "<- test case status")
-        print ('->' * 40)
-        print (self.param_verify_log)
-        print ('->' * 40)
+
+        logging.info('->' * 40)
+        logging.info('Expected data :::')
+        logging.info(self.dict_expected_data)
+
+        logging.info('->' * 40)
+        logging.info('actual-expected match result:::')
+        logging.info(">>>test case status")
+        logging.info(self.testcase_result)
+
+        logging.info('->' * 40)
+        logging.info(self.param_verify_log)
+        logging.info('->' * 40)
 
 
 class Util():
@@ -201,12 +204,11 @@ class Util():
 
     def print_dict_elements(self, dict_object):
         for k, v in dict_object.items():
-            print (k, '-->', v)
-
+            logging.info(k, '-->', v)
 #for unit testing the functions
 if __name__ == '__main__':
-    #wsdl = 'file:///' +  os.path.abspath("./query.jws.xml")
-    wsdl = "https://XXXXXXXXXX/webtrust/query.jws?wsdl"
+    #wsdl = 'file:///' +  os.path.abspath("./query.jws.xml")  # get from filesystem
+    wsdl = "https://XXXXXXXXXX/webtrust/query.jws?wsdl"   # get from url 
     h = TestApi(wsdl,
         api_name='GetOrderByPartnerOrderID',
         UserName='xxxxxxx',
