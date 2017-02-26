@@ -2,17 +2,19 @@
 __maintainer__ : debaditya_mohankudo@symantec.com
 '''
 
-'''
-tHIS CREATES A SOAP CLIENT -> CREATES THE INPUT SOAP REQUEST WITH TEST DATA
-DYNAMICALLY BASED ON API NAME ->
-AND POSTS THE DATA AS A SOAP ENVOLOPE ->
-GETS THE RESOPONSE
-'''
 import requests
 from suds import client as sudsClient
 from suds.cache import NoCache
 
 import os
+
+
+logging.info('''
+tHIS CREATES A SOAP CLIENT -> CREATES THE INPUT SOAP REQUEST WITH TEST DATA
+DYNAMICALLY BASED ON API NAME ->
+AND POSTS THE DATA AS A SOAP ENVOLOPE ->
+GETS THE RESOPONSE
+''')
 
 session = requests.Session()
 
@@ -166,7 +168,7 @@ class Util():
                 if soap_to_dict is True:  #: output soap response operation
                     #: no duplicate leaf expected in response???
                     dict_data[temp[0]] = soap_object[element_name]
-                    dict_data[temp[1]] = dict_data[temp[0]]
+                    dict_data[temp[1]] = soap_object[element_name]
                 else:  #: input soap object operation
                     if temp[0] in dict_data:  #: parent_child notation
                         soap_object[element_name] = dict_data[temp[0]]
