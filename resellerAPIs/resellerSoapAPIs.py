@@ -1,31 +1,29 @@
-'''
-__maintainer__ : debaditya_mohankudo@symantec.com
-'''
-
-import requests
-from suds import client as sudsClient
+import logging
+import os
+from suds import client as sudsClient  ##https://bitbucket.org/jurko/suds/issues/93/sudsclient-raise-exception
 from suds.cache import NoCache
 
-import os
+
+
+
+logging.basicConfig(level=logging.INFO)
+logging.getLogger('suds.transport.http').setLevel(logging.DEBUG)
 
 
 logging.info('''
-tHIS CREATES A SOAP CLIENT -> CREATES THE INPUT SOAP REQUEST WITH TEST DATA
-DYNAMICALLY BASED ON API NAME ->
-AND POSTS THE DATA AS A SOAP ENVOLOPE ->
-GETS THE RESOPONSE
+__maintainer__ = 'debaditya_mohankudo@symantec.com'
+>>>Working
+>the input data template for an api is dynamically created from wsdl in run time
+>this is filled by a recursive function which searches for the parameters from test data
+>and posted
+
+>this can also verify the result parameters and mark testcase pass/fail
+
+>hence any new api can be tested without modifying the code 
+
+>>>WARNING: 
+>Does not work for hello api
 ''')
-
-session = requests.Session()
-
-#from suds.client import Client as sudsClient
-#https://bitbucket.org/jurko/suds/issues/93/sudsclient-raise-exception
-
-# uncomment below for debugging  code
-
-import logging
-logging.basicConfig(level=logging.INFO)
-logging.getLogger('suds.transport.http').setLevel(logging.DEBUG)
 
 class TestApi():
     """Creates soap object types
@@ -48,12 +46,12 @@ class TestApi():
            takes wsdl url OR file as input
         '''
         self.client = sudsClient.Client(self.wsdl, cache=NoCache())
-     
-
 
     def _create_input_obj_type(self):
         self.input_soap_template = self.client.factory.create(self.api_name)[0]
-        #print self.input_soap_template
+        logging.info('>>> Template defination for api')
+        logging.info(self.api_name)
+        logging.info(self.input_soap_template)
 
     def _set_input_test_data(self):
         '''
@@ -69,8 +67,10 @@ class TestApi():
 
     def _post_soap_request(self):
         post_soap_handle = getattr(self.client.service, self.api_name)
+        logging.info('--' * 40)
         self.response_soap_object = post_soap_handle(
                                     self.input_soap_object_w_test_data)
+
 
     def process_soap_request(self):
         '''This posts the api requst with test data
@@ -108,18 +108,15 @@ class TestApi():
 
     def print_relevant_data(self):
 
-        logging.info('->' * 40)
-        logging.info('Expected data :::')
+        logging.info('--' * 40)
+        logging.info('>>>Expected data :::')
         logging.info(self.dict_expected_data)
 
-        logging.info('->' * 40)
-        logging.info('actual-expected match result:::')
+        logging.info('--' * 40)
         logging.info(">>>test case status")
         logging.info(self.testcase_result)
-
-        logging.info('->' * 40)
         logging.info(self.param_verify_log)
-        logging.info('->' * 40)
+        logging.info('--' * 40)
 
 
 class Util():
@@ -207,6 +204,8 @@ class Util():
     def print_dict_elements(self, dict_object):
         for k, v in dict_object.items():
             logging.info(k, '-->', v)
+
+
 #for unit testing the functions
 if __name__ == '__main__':
     #wsdl = 'file:///' +  os.path.abspath("./query.jws.xml")  # get from filesystem
