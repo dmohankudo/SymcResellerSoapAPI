@@ -1,3 +1,8 @@
+This program finds the input for a given SOAP api from wsdl recursively and sets the input data as it matches. This way we dont create new methods to call each apis.
+
+
+
+
 # SymcResellerSoapAPI
 Dependency:
 
